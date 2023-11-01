@@ -1,14 +1,26 @@
 
 import Post from './Post/Post'
+import {Grid , CircularProgress} from '@mui/material'
 import useStyles from './styles'
+import {  useSelector } from 'react-redux/es/hooks/useSelector';
 const Posts =() =>{
-    // eslint-disable-next-line no-unused-vars
+   
+    const posts =  useSelector((state) => state.posts);
     const classes = useStyles();
+
+    console.log(posts)
     return (
-        <>
-        <Post/>
-        <h1>Posts</h1>
-        </>
+    !posts.length ? <CircularProgress/> :(
+        <Grid className= {classes.container} container alignItems = 'stretch' spacing = {3}>
+                {
+                    posts.map((post)=> (
+                        <Grid key = {post._id} item xs ={12} sm ={6}>
+                            <Post post = {post} /> 
+                        </Grid>
+                    ))
+                }
+        </Grid>
+    )
     )
 }
 
