@@ -9,10 +9,13 @@ import {useDispatch } from 'react-redux';
 import { deletePost } from '../../../actions/posts';
 
 
+
 const Post =({post , setCurrentId}) =>{
     // eslint-disable-next-line no-unused-vars
     const classes = useStyles();
     const dispatch = useDispatch();
+    
+    
     return (
        <Card className={classes.card}>
             <CardMedia className = {classes.media} image= {post.selectedFile} tilte = {post.tilte}/>
