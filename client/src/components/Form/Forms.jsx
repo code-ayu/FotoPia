@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { useState , useEffect } from 'react';
 import useStyles from './styles'
 import FileBase from 'react-file-base64'
@@ -6,6 +5,7 @@ import {useDispatch  , useSelector} from 'react-redux';
 import { TextField , Button , Typography , Paper  } from '@material-ui/core';
 import { createPost , updatePost } from '../../actions/posts';
 
+//Forms 
 // eslint-disable-next-line react/prop-types
 const Form =({currentId , setCurrentId}) =>{
     const [postData , setPostData] = useState({

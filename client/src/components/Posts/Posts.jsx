@@ -3,6 +3,7 @@ import Post from './Post/Post'
 import {Grid , CircularProgress} from '@mui/material'
 import useStyles from './styles'
 import {  useSelector } from 'react-redux/es/hooks/useSelector';
+//Posts 
 // eslint-disable-next-line react/prop-types
 const Posts =( {setCurrentId}) =>{
    
