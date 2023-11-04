@@ -11,7 +11,7 @@ function Navbar() {
         <AppBar className = {classes.appBar} position='static' color='inherit'>
           <div className={classes.brandContainer}>
             <Typography component = {Link} to ='/' className = {classes.heading} variant = 'h2' >FOTOPIA</Typography>
-          </div>
+          
           <Toolbar className={classes.toolbar}>
             {user ? (
                 <div className={classes.profille}>
@@ -24,6 +24,7 @@ function Navbar() {
                 )}
 
           </Toolbar>
+          </div>
         </AppBar>
     </div>
   )
