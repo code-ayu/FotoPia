@@ -8,14 +8,14 @@ function Input({name, handleChange , label , autoFocus , type , handleShowPasswo
   return (
     <Grid item xs ={12} sm = {half ? 6 :12}>
         <TextField name = {name} 
-        onchange = {handleChange} 
+        onChange = {handleChange} 
         variant = 'outlined' 
         required
         fullWidth
         label = {label}
         autoFocus = {autoFocus}
         type = {type} 
-           InputProps= {name ==='password' &&{
+           InputProps= {name ==='password'  ?{
             endAdornment :( 
                 <InputAdornment position = 'end'>
                     <IconButton 
@@ -24,7 +24,7 @@ function Input({name, handleChange , label , autoFocus , type , handleShowPasswo
                         </IconButton>
                 </InputAdornment>
             )
-        }} ></TextField>
+        }:null}  ></TextField>
 
 
     </Grid>
