@@ -1,15 +1,16 @@
-import {Avatar ,  Paper , Grid , Typography , Container, Button, Icon} from '@mui/material'
+import {Avatar ,  Paper , Grid , Typography , Container, Button} from '@mui/material'
 import useStyles from './styles';
 import Input from './Input';
 import { useState } from 'react';
-import {GoogleLogin} from '@react-oauth/google';
-import { useDispatch } from 'react-redux';
+// import {GoogleLogin} from '@react-oauth/google';
+// import { useDispatch } from 'react-redux';
+// import {jwtDecode}  from 'jwt-decode';
 
 function Auth() {
   const classes= useStyles();
   const [isSignUp , setIsSignUp] = useState(false);
   const [showPassword , setShowPassword] = useState(false);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const handleShowPassword = () =>{
     setShowPassword((prevShowPassword) => !prevShowPassword )
@@ -27,21 +28,24 @@ function Auth() {
     handleShowPassword(false)
   }
 
-  const googleSuccess = async (res) => {
-    const result = res?.profileObj; //undefined
-    const token = res?.tokenId; 
-    try {
-      dispatch({type : 'AUTH' , data : {result , token} });
-    } catch (error) {
-      console.log(error)
-    }
-    console.log(res)
-  }
+  // const googleSuccess = async (res) => {
+  //   console.log("res = " + res)
+  //   const credentialResponse = jwtDecode(res.credential)
+  //   console.log(credentialResponse)
+  //   const result = credentialResponse?.profileObj; //undefined
+  //   const token = credentialResponse?.tokenId; 
+  //   console.log(token)
+  //   try {
+  //     dispatch({type : 'AUTH' , data : {result , token} });
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
 
-  const googleFailure = (error) => {
-    console.log(error)
-   console.log('Google sign in was unsuccesfull.') 
-  }
+  // const googleFailure = (error) => {
+  //   console.log(error)
+  //  console.log('Google sign in was unsuccesfull.') 
+  // }
 
   return (
     <Container component = 'main' maxWidth = 'xs'>
@@ -65,7 +69,7 @@ function Auth() {
             {isSignUp && <Input name= 'confirmPassword' label ='Repeat Password' handleChange={handleChange} type = 'password' />}
             </Grid>
             <Button type = 'submit' fullWidth variant='contained' color = 'primary' className={classes.submit} >{isSignUp ? 'Sign Up' : 'Sign in'}</Button>
-            <GoogleLogin  render={(renderProps) =>(
+            {/* <GoogleLogin  render={(renderProps) =>(
               <Button 
               className={classes.googleButton} 
               color='primary' 
@@ -76,8 +80,9 @@ function Auth() {
             )} 
               onSuccess={googleSuccess}
               onError={googleFailure}
+              cookiePolicy="single_host_origin"
               
-            />
+            /> */}
             <Grid container justify = 'flex-end'>
               <Grid item>
                 <Button onClick={switchMode}>{isSignUp ? 'Already have Account ?' : "Don't have an account ?"}</Button>
