@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import * as api from '../api';
+import * as api from '../api/index.js';
 import { FETCH_ALL , CREATE ,DELETE , LIKE , UPDATE } from '../constants/actionTypes';
 // Action creators
 export const getPosts = () => async (dispatch) =>{

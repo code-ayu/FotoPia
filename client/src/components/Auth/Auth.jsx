@@ -1,32 +1,49 @@
 import {Avatar ,  Paper , Grid , Typography , Container, Button} from '@mui/material'
 import useStyles from './styles';
 import Input from './Input';
+import { useNavigate }  from 'react-router-dom';
 import { useState } from 'react';
 // import {GoogleLogin} from '@react-oauth/google';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import {signup , signin} from '../../actions/auth'
+
 // import {jwtDecode}  from 'jwt-decode';
+
+const initialState = { firstname: '', lastname: '', email: '', password: '', confirmPassword: '' };
+
 
 function Auth() {
   const classes= useStyles();
   const [isSignUp , setIsSignUp] = useState(false);
   const [showPassword , setShowPassword] = useState(false);
-  // const dispatch = useDispatch();
+  const [formData , setFormData] = useState(initialState)
+  const dispatch = useDispatch();
+  const history = useNavigate()
+
 
   const handleShowPassword = () =>{
     setShowPassword((prevShowPassword) => !prevShowPassword )
   }
-  const handleSubmit = () => {
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (isSignUp) {
+      dispatch(signup(formData , history))
+    }
+    else{
+      dispatch(signin(formData , history))
+
+    }
   }
-
-  const handleChange = () => {
-
+  const handleChange = (e) => {
+    setFormData({...formData , [e.target.name] : e.target.value})
   } 
 
   const switchMode = () => {
     setIsSignUp((isSignUp) => !isSignUp)
-    handleShowPassword(false)
+    setShowPassword(false)
   }
+
 
   // const googleSuccess = async (res) => {
   //   console.log("res = " + res)
