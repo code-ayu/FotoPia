@@ -13,13 +13,10 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 const store = createStore(reducers , compose(applyMiddleware(thunk)))
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-  
-
-  
     <Provider store={store}>
     <App />
     </Provider>
-   
+  
   </React.StrictMode>,
 )
  
