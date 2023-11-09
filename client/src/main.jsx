@@ -11,7 +11,7 @@ import reducers from './reducers'
 import './index.css'
 
 
-const store = configureStore(reducers , compose(applyMiddleware(thunk)))
+const store = configureStore({reducer : reducers} , compose(applyMiddleware(thunk)))
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
