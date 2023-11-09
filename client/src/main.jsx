@@ -15,11 +15,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
   
 
-  <GoogleOAuthProvider clientId='177656093582-qg97tn6ddv49irvbqrq53h1v699sou1j.apps.googleusercontent.com'>
+  
     <Provider store={store}>
     <App />
     </Provider>
-    </GoogleOAuthProvider>;
+   
   </React.StrictMode>,
 )
  

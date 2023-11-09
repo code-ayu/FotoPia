@@ -4,6 +4,7 @@ import {Link, useNavigate } from 'react-router-dom';
 import { useState , useEffect } from 'react';
 import useStyles from './styles';
 import { useDispatch } from 'react-redux';
+import {jwtDecode}  from 'jwt-decode';
 import { LOGOUT } from '../../constants/actionTypes';
 
 function Navbar() {
@@ -15,10 +16,22 @@ function Navbar() {
     const logout = () => {
       dispatch({ type: LOGOUT });
       setUser(null);
-      navigate('/auth');
       localStorage.clear();
+      navigate('/');
     };
+
     console.log(user)
+
+    useEffect(() => {
+      const token = user?.token ;
+      if(token) {
+        const decodedToken = jwtDecode(token)
+        if(decodedToken.exp *1000 < new Date().getTime()){
+          logout();
+        }
+      }
+
+    }, [location])
 
   return (
     
