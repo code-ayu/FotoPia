@@ -16,6 +16,7 @@ function Navbar() {
       dispatch({ type: LOGOUT });
       setUser(null);
       navigate('/auth');
+      localStorage.clear();
     };
     console.log(user)
 
